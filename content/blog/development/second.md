@@ -4,8 +4,6 @@ date: 2019-07-29 07:32:13
 category: 'development'
 ---
 
-#React `useState` Hook
-
 ###📌 The Basics
 
 > We will call `useState` inside a function component to add some local state to it.
@@ -92,7 +90,7 @@ export default function() {
   //create initial state for count
   const [ count, setCount ] = useState(0);
 
-  //you can pass an updater function to setCount (like on setState)
+  //you can pass an updater function to setCount (like in setState)
   //the updater function will have access to the previous state
   const handleClick = () => setCount(prevCount => prevCount + 1)
 
