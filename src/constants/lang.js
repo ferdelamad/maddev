@@ -1,2 +1,2 @@
-export const KOREAN = 'ko'
+export const SPANISH = 'es'
 export const ENGLISH = 'en'
