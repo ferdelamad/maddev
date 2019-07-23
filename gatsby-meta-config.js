@@ -1,12 +1,12 @@
 module.exports = {
   title: `⚡maddev`,
   description: `Blog posted about ...`,
-  author: `maddev`,
+  author: `fermaddev`,
   introduction: `I build stuff with computers and on my spare time I'm a Software Engineer.`,
   siteUrl: `https://maddev.netlify.com`,
   social: {
-    twitter: `@maddev`,
-    github: `https://github.com/ferdelamad`,
+    twitter: `@fermaddev`,
+    github: `ferdelamad`,
     medium: ``,
     facebook: ``,
   },
