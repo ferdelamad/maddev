@@ -1,6 +1,6 @@
 ---
 title: 'React useState Hook'
-date: 2019-07-29 07:32:13
+date: 2019-07-22 07:32:13
 category: 'development'
 ---
 
@@ -101,5 +101,9 @@ export default function() {
     </div>
   )
 }
+
 ```
+
+You can read more about React Hooks **[here](https://reactjs.org/docs/hooks-intro.html)**.
+
 Hope you enjoyed reading, Happy hacking! 👻
