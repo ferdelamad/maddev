@@ -1,47 +1,50 @@
 ---
-title: 'React useRef Hook'
+title: "⚓ Let's build a custom hook!"
 date: 2019-07-23 07:21:45
 category: 'development'
 ---
 
-### ⚓ Let's build a custom hook!
+Let's create our own reusable custom hook.
+
+Add previos post
 
 ### useForm hook
+
 ```jsx
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 const useForm = callback => {
-
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState({})
 
   const handleSubmit = event => {
-    event.preventDefault();
-    callback();
+    event.preventDefault()
+    callback()
     //reset form values
-    setValues({});
+    setValues({})
   }
 
   const handleChange = event => {
-    const { name, value } = event.target;
-    event.persist();
+    const { name, value } = event.target
+    event.persist()
     setValues(prevValues => ({ ...prevValues, [name]: value }))
   }
 
   return {
     values,
     handleSubmit,
-    handleChange
+    handleChange,
   }
-};
+}
 ```
 
 ### Using the custom hook
+
 ```jsx
-  export default function() {
-  const { values, handleSubmit, handleChange } = useForm(postData);
+export default function() {
+  const { values, handleSubmit, handleChange } = useForm(postData)
 
   function postData() {
-    console.table(values);
+    console.table(values)
   }
 
   return (
