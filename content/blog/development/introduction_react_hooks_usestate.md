@@ -1,10 +1,12 @@
 ---
-title: '⚡ React useState Hook'
+title: '⚡ An introduction to React Hooks and useState'
 date: 2019-07-22 07:32:13
 category: 'development'
 ---
 
 ###📌 The Basics
+
+Hooks are available in React since v16.8. It's a new and different way of using state and other React features without the need of class. Also, you may share this state/logic by writing custom and reusable hooks.
 
 > We will call `useState` inside a function component to add some local state to it.
 
