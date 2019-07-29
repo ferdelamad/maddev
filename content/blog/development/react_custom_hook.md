@@ -36,8 +36,8 @@ export default function() {
 
   function handleSubmit(){
     event.preventDefault()
-    //my custom function to post the data
     postData(values)
+    //reset form values
     setValues({})
   }
 
@@ -74,7 +74,6 @@ const useForm = callback => {
   const handleSubmit = event => {
     event.preventDefault()
     callback()
-    //reset form values
     setValues({})
   }
 
