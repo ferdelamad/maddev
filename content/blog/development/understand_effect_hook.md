@@ -1,5 +1,5 @@
 ---
-title: '⚓ Understand the effect hook'
+title: '🔥 Understand the effect hook'
 date: 2019-08-04 12:03:15
 category: 'development'
 ---
@@ -13,7 +13,7 @@ If you are new to React Hooks, I would strongly suggest to start first with [An 
 - `useEffect` takes a function as it's first argument were you provide your custom logic to be executed.
 - Think of `useEffect` hook as a combination of `componentDidMount`, `componentDidUpdate` and `componentWillMount` (pretty neat right?).
 
-> In other words `useEffect` it's like a watcher that will be executed on mount/unmount or any change of state/props by default.
+> In other words **useEffect** it's like a watcher that will be executed on mount/unmount or any change of state/props by default.
 
 ### 📙 Basic Example
 
@@ -123,7 +123,7 @@ If you run this example, you will notice how the first `useEffect` it's only log
 
 On the second argument, which is an array, we pass only the values that when changed will trigger the effect.
 
-##### 🤔 How does it work??
+##### 🤔 How does it work?
 
 Let's say that **count** is 2 and **name** changes causing our component to re-render, **count** will still be 2 so React will compare the _previous count_ [2] vs. the _current count_ [2].
 Because the value is the same (5 === 5), React will not execute the effect, it will **skip** the effect, optimizing the execution.
