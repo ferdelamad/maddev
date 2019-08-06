@@ -39,14 +39,15 @@ export default function() {
 }
 ```
 
-Right now we are calling `useEffect` on **every render**, which if we had more pieces of state or props changing will not be very efficient right? We would be triggering ans effect that it's only needed when `name` changes.
-We will talk about _optimization_ so bare with me.
+Right now we are calling `useEffect` on **every render**, which if we had more pieces of state or props changing will not be very efficient right?
+We would be triggering an effect that it's only needed when `name` changes.
+We will talk about _optimization_ later in the article so bear with me.
 
-> Something to remember: Effects scheduled with useEffect don’t block the browser from updating the screen.
+> Something to remember: Effects scheduled with useEffect don’t block the browser from updating the screen. Which makes your app more responsive.
 
 ### 📞 Calling it only once
 
-We can do the same operations that we would normally do inside of `componentDidMount`, like fetching data.
+We can do the same operations that we would normally do inside of `componentDidMount`, like fetching data:
 
 ```jsx
 import React, { useState, useEffect, Fragment } from 'react'
@@ -72,15 +73,15 @@ export default function() {
 }
 ```
 
-If you look closely you will notice that we passed an **empty array** as a second argument of `useEffect`.
-This is how you only execute an effect and clean it up only once (when the component is mounted and unmounted), by passing an empty array [ ] as a second argument.
+If you look closely you will notice that we passed an **empty array  [ ]** as a second argument of `useEffect`.
+This is how you only execute an effect and clean it up only once (when the component is mounted and unmounted).
 In the following example shows how to trigger `useEffect` conditionally, only when certain **values** change.
 
 An empty array tells React that your effect doesn’t depend on any values neither from _state_ or _props_, so it never needs to be called again.
 
 ### 🕒 Separation of concerns and optimization
 
-In the first article of this series it was shown how `useState` could be called more than once. Well, you can do the same with `useEffect` and use several effects in the same component.
+In the first article of this series, it was shown how `useState` could be called more than once. Well, you can do the same with `useEffect` and use several effects in the same component.
 
 This allows us to separate concerns better by separating logic into different effects.
 
@@ -119,16 +120,16 @@ export default function() {
 }
 ```
 
-If you run this example, you will notice how the first `useEffect` it's only logged when **count** changes. Same thing with the second one, it will logged until **name** changes.
+If you run this example, you will notice how the first `useEffect` it's only logged when **count** changes. The same thing with the second one, it will only be logged until **name** changes.
 
-On the second argument, which is an array, we pass only the values that when changed will trigger the effect.
+For the second argument, which needs to be an array, we pass only the values that when changed, will trigger the effect.
 
 ##### 🤔 How does it work?
 
 Let's say that **count** is 2 and **name** changes causing our component to re-render, **count** will still be 2 so React will compare the _previous count_ [2] vs. the _current count_ [2].
-Because the value is the same (5 === 5), React will not execute the effect, it will **skip** the effect, optimizing the execution.
+Because the value is the same (2 === 2), React will not execute the effect, it will **skip** the effect, optimizing the execution.
 
-If **count** changes to 3, React will compare the items in the [2] array from the previous render to items in the [3] array from the next render.
+If **count** changes to 3, React will compare the items in the array [2] from the previous render to new items in the array [2] from the current render.
 Since the values are different (2 !== 3) the effect will be executed.
 
 > If there are multiple items in the array, React will re-run the effect even if just one of them is different.
@@ -138,6 +139,28 @@ Since the values are different (2 !== 3) the effect will be executed.
 Before when using a `class` if you wanted to remove/cleanup when a component was unmounted, you needed to use `componentWillUnmount`.
 One of the nice things about `useEffect` is that the cleanup can be performed in the same effect.
 
+#### With a class
+```jsx
+class MyClass extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.props.handleScroll)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.props.handleScroll)
+  }
+
+  render() {
+    return <h1>Example of cleaning up after component unmounts</h1>
+  }
+
+```
+
+#### With useEffect
 ```jsx
 export default function({ handleScroll }) {
   useEffect(() => {
