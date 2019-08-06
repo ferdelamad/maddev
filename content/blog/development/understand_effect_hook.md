@@ -141,7 +141,7 @@ One of the nice things about `useEffect` is that the cleanup can be performed in
 
 #### With a class
 ```jsx
-class MyClass extends React.Component {
+export default class extends Component {
   constructor(props) {
     super(props);
   }
