@@ -36,7 +36,7 @@ You can do something very similar when combining React Dev Tools. The reference 
 
 ![](./images/cdt/cdt01.gif)
 
-Having that reference allows you to inspect the element `props` and `methods` .
+Having that reference allows you to inspect the element `props` and `methods`.
 
 ### 🔑 Get keys or values of an object
 
