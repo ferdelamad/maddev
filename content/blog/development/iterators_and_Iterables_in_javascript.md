@@ -1,6 +1,6 @@
 ---
 title: "🧬 Iterators and Iterables in JavaScript"
-date: 2019-07-23 07:21:45
+date: 2019-09-23 08:33:17
 category: 'development'
 ---
 
@@ -55,7 +55,7 @@ function helloWorldIterator() {
 }
 ```
 
-To summarize the code, `helloWordIterator` it’s a function that returns an object (iterator), that object has a .next( ) method which can generate 3 different values, after all, values have been exhausted then the return value would be an object with the properties of value `undefined` and a done `false`.
+To summarize the code, `helloWordIterator` it’s a function that returns an object (iterator), that object has a .next( ) method which can generate 3 different values, after all, values have been exhausted then the return value would be an object with the properties of value `undefined` and done `false`.
 
 Now let’s use our brand new iterator:
 
@@ -151,7 +151,7 @@ This sequence may be either finite or infinite meaning that we could potentially
 { value: undefined done: true }
 ```
 
-## 💆🏻‍ Bake to iterators
+## 💆🏻‍ Back to iterators
 Have you ever asked yourself how destructing works?
 
 In case you guess it, yes it's functionally depends on `iterables`. Let’s try to replicate the same behavior of destructuring in the following example:
