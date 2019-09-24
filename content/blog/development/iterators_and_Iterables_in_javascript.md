@@ -181,7 +181,7 @@ nums['filter'](num => num > 2);
 
 Now that we have our **iterator** let's invoke it's **.next( )** method and start capturing the values that we want in variables.
 ```js
-const nums = [1, 2, 3, 4, 5];
+const nums = [1, 2, 3, 4, 5, 6];
 const iterator = nums[Symbol.iterator]();
 
 const one = iterator.next().value
@@ -220,7 +220,7 @@ A quick reminder, this is why you can only use an iterator only **once**, becaus
 This is a perfect example that allows us to understand how `iterators` work on a very basic level, as well on how they are implemented “under the hood” to compose features like destructuring.
 
 **We can do the same thing with strings**
-Because `Strings` are iterables as well, now we can create arrays of strings without calling the `.split( )` method:
+Because `Strings` are iterables as well, now we can create arrays of strings without calling the `.split( )` method, instead we can use the `spread operator`:
 
 ```js
 const name = 'Fernando';
@@ -228,8 +228,8 @@ const name = 'Fernando';
 const nameArr = [...name];
 // [“F", "e", "r", "n", "a", "n", "d", "o"]
 ```
+Again the spread operator functionality it's possible due to iterators, we can replicate its behavior like this:
 
-Again we can replicate this behavior using iterators:
 ```js
 const name = 'Fernando';
 
@@ -250,8 +250,10 @@ console.log(nameArr)
 ```
 At this point, you should be able to understand why and how this code works 😬.
 
+You can find the source code for all of the examples **[here](https://github.com/ferdelamad/blog-examples/tree/master/src/Iterators)**.
+
 I really hope you enjoyed learning about these new features of JavaScript, which I personally think are foundational topics that may solidify your understanding of the language overall and help you understand other more complex features.
 
 Happy hacking! 👻
 
-Learn more about how iterators and iterables [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#Built-in_iterables).
+Learn more about how iterators and iterables **[here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#Built-in_iterables)**.
