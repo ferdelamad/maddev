@@ -91,9 +91,9 @@ const Container = styled.div`
   ${baseShadow}
 `
 
-const MyApp = ( ) => (
+const App = () => (
   <Container color="purple">
-   <p>Using box shadow mixin! 🧙<p>
+   <h1>Using box shadow mixin! 🧙</h1>
   </Container>
 );
 ```
@@ -126,7 +126,7 @@ const font = ({ color, size, family }) => `
   font-family: ${family || "Helvetica neue"};
 `;
 
-const AppStyles = styled.div`
+const Container = styled.div`
   font-family: sans-serif;
   text-align: center;
   ${baseShadow}
@@ -135,23 +135,25 @@ const AppStyles = styled.div`
 
 export default function App() {
   return (
-    <AppStyles color="purple">
-      <h1>Styled Component Mixins</h1>
-    </AppStyles>
+    <Container color="purple">
+      <h1>Using box shadow mixin! 🧙</h1>
+    </Container>
   );
 }
 ```
+You play around with the live version of the code **[here](https://codesandbox.io/s/styled-components-mixins-cloyi)**.
+
 
 # 🍳 Mixin recipes
 
 There are some common `css` recipes that you can reuse in your apps:
 
-### Rem units
+### Font in rem units
 
 ```jsx
 const rem = (size, base = 16) => `
-  font-size: ${size}px;
-  font-size: ${size / base} * 1rem;
+  font-size: ${size}px; // older browsers fallback
+  font-size: calc(${size / base} * 1rem);
 `;
 ```
 
