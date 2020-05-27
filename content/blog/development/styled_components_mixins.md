@@ -1,5 +1,5 @@
 ---
-title: "💅 Styled Components Mixin"
+title: "💅 Styled Components Mixins"
 date: 2020-05-25 13:26:12
 category: "development"
 ---
@@ -151,7 +151,7 @@ There are some common `css` recipes that you can reuse in your apps:
 ### Font in rem units
 
 ```jsx
-const rem = (size, base = 16) => `
+const fontSize = (size, base = 16) => `
   font-size: ${size}px; // older browsers fallback
   font-size: calc(${size / base} * 1rem);
 `;
