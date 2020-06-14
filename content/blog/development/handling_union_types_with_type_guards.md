@@ -1,6 +1,6 @@
 ---
-title: "🐶 TypeScript Utilities explained with dogs"
-date: 2020-05-30 17:37:46
+title: "🐕Handling Union Types with Type Guards in TypeScript"
+date: 2020-06-14 13:06:12
 category: "development"
 ---
 
@@ -9,10 +9,10 @@ One thing that I struggled when I started to use TypeScript was dealing with Uni
 
 Unions can be very helpful when dealing with data that might change depending on different scenarios or unreliable data from any API.
 
-It can be tricky to get them right in TypeScript, but `Type Guards` are here to make the use of Unions smooth and easy.
-Be definition a `Type Guard` is just a helper method that checks if its argument is of some type.
+It can be tricky to get them right in TypeScript, but **Type Guards** are here to make the use of Unions smooth and easy.
+Be definition a Type Guard is just a helper method that checks if its argument is of some type.
 
-We will again use **Pets**, like in the previous TS Utilities article to illustrate this, because who doesn't love pets?
+We will use again **Pets**, like in the previous [TS Utilities article](https://madd.dev/development/typescript_utilities/), to illustrate this, because who doesn't love pets?
 
 ```tsx
 type Cat = {
@@ -32,7 +32,7 @@ type Pet = Cat | Dog;
 
 Both `Cat` and `Dog` are very similar, but they have different hold different properties.
 
-In order to *tell* TypeScript when the type is actually a Cat or Dog we will need our `Type Guard` , in order to define a type guard, we will need to define a function that returns a `type predicate`:
+In order to *tell* TypeScript when the type is actually a Cat or Dog we will need our Type Guard , in order to define a type guard, we will need to define a function that returns a `type predicate`:
 
 ```tsx
 function isDog(kind: Pet): kind is Dog {
@@ -63,7 +63,7 @@ function usePet(pet: Pet) {
 ```
 
 Because we are using `isDog` in the if block, TypeScript *knows* it's dealing with a Dog inside that block.
-That's why calling `pet.bark` is not giving us an error, but trying to call `pet.meow` in the same block would.
+That's why calling **pet.bark** is not giving us an error, but trying to call **pet.meow** in the same block would.
 
 Now we can confidently use our function:
 
