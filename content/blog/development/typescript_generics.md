@@ -1,5 +1,5 @@
 ---
-title: '🐺 TypeScript Utilities explained with dogs'
+title: '🐺 TypeScript Generics explained with pets'
 date: 2020-06-28 13:58:32
 category: 'development'
 ---
@@ -13,7 +13,7 @@ Think about generics as a type that you can **specify** when declaring a type, t
 One of the most basic representation of a generic type in TypeScript is an array:
 
 ```tsx
-type NumArray = Array<number>
+type NumArray = Array<number>;
 ```
 
 Generic is any type that you specify inside the angle brackets <>.
@@ -38,8 +38,8 @@ Let's refactor our implementation:
 
 ```tsx
 const getLast = <T>(arr: Array<T>) => {
-  return arr[arr.length - 1]
-}
+  return arr[arr.length - 1];
+};
 ```
 
 In this case `T` stands for the **generic** type that can be passed to the function, that way we can specify the type of the input array when we call the function.
@@ -47,9 +47,9 @@ In this case `T` stands for the **generic** type that can be passed to the funct
 Now you can use `getLast` successfully with different kinds of arrays:
 
 ```tsx
-const lastNum = getLast([1, 2, 3])
+const lastNum = getLast([1, 2, 3]);
 
-const lastStr = getLast(['a', 'b', 'c'])
+const lastStr = getLast(['a', 'b', 'c']);
 ```
 
 TypeScript is smart enough to **infer** the type of the array so you don't have to specify the generic type.
@@ -58,27 +58,27 @@ Let's use our `Pets` example to exemplify how you could specify the generic type
 
 ```tsx
 type Cat = {
-  name: string
-  hasKittens: boolean
-  owner?: string
-}
+  name: string;
+  hasKittens: boolean;
+  owner?: string;
+};
 
 type Dog = {
-  name: string
-  hasPuppies: boolean
-  owner?: string
-}
+  name: string;
+  hasPuppies: boolean;
+  owner?: string;
+};
 
 const lastCat = getLast<Cat>([
   { name: 'Furry', hasKittens: false },
   { name: 'Oreo', hasKittens: true },
-])
+]);
 // type Cat
 
 const lastDog = getLast<Dog>([
   { name: 'Rambo', hasPuppies: true },
   { name: 'Rocky', hasPuppies: false },
-])
+]);
 // type Dog
 ```
 
@@ -90,8 +90,8 @@ You are not constraint on the amount of types to use when adding a generic. If y
 
 ```tsx
 const makePetArray = <A, B>(a: A, b: B): [A, B] => {
-  return [a, b]
-}
+  return [a, b];
+};
 ```
 
 In this case the return type was specified as well in order to have tell TS that a **tuple** is the outcome of **makePetArray**.
@@ -99,10 +99,10 @@ In this case the return type was specified as well in order to have tell TS that
 Finally it can be implementing like this:
 
 ```tsx
-const furry: Cat = { name: 'Furry', hasKittens: false }
-const rocky: Dog = { name: 'Rocky', hasPuppies: false }
+const furry: Cat = { name: 'Furry', hasKittens: false };
+const rocky: Dog = { name: 'Rocky', hasPuppies: false };
 
-const dogAndCatArr = makePetArray<Dog, Cat>(rocky, furry)
+const dogAndCatArr = makePetArray<Dog, Cat>(rocky, furry);
 // type [Dog, Cat]
 ```
 
@@ -112,14 +112,14 @@ If you want to make the generic types optional, you can specify default values f
 
 ```tsx
 const makePetArray = <A = Dog, B = Cat>(a: A, b: B): [A, B] => {
-  return [a, b]
-}
+  return [a, b];
+};
 ```
 
 Now the implementation will be simpler:
 
 ```tsx
-const dogAndCatArr = makePetArray(rocky, furry)
+const dogAndCatArr = makePetArray(rocky, furry);
 ```
 
 Usually the default value can be set to `any` if no type is specified.
@@ -136,17 +136,17 @@ const addOwner = <T extends Dog | Cat>(pet: T, owner: string): T => {
   return {
     ...pet,
     owner,
-  }
-}
+  };
+};
 ```
 
 Then we can simple add our owners:
 
 ```tsx
-const ferDog = addOwner<Dog>(rocky, 'fernando')
+const ferDog = addOwner<Dog>(rocky, 'fernando');
 // type Dog
 
-const robCat = addOwner<Cat>(furry, 'Rob')
+const robCat = addOwner<Cat>(furry, 'Rob');
 // type Cat
 ```
 
@@ -168,17 +168,17 @@ Let's create a new `Dog` type as a base type:
 
 ```tsx
 type Dog<T> = {
-  name: string
-  owner: string
-  info: T
-}
+  name: string;
+  owner: string;
+  info: T;
+};
 ```
 
 Now let's add the type variations:
 
 ```tsx
-type GermanShepherd = Dog<'German shepherd'>
-type GoldenRetriever = Dog<'Golden retriever'>
+type GermanShepherd = Dog<'German shepherd'>;
+type GoldenRetriever = Dog<'Golden retriever'>;
 ```
 
 Finally let's implement the new types:
@@ -188,13 +188,13 @@ const rambo: GermanShepherd = {
   name: 'Rambo',
   owner: 'fernando',
   info: 'German shepherd',
-}
+};
 
 const max: GoldenRetriever = {
   name: 'Max',
   owner: 'Joe',
   info: 'Golden retriever',
-}
+};
 ```
 
 If you try to assign something different to `info` , TS will tell you that is not allowed:
@@ -215,7 +215,7 @@ const rambo: Dog<string> = {
   name: 'Rambo',
   owner: 'fernando',
   info: 'German shepherd',
-}
+};
 
 const max: Dog<{ age: number; kind: string }> = {
   name: 'Max',
@@ -224,7 +224,7 @@ const max: Dog<{ age: number; kind: string }> = {
     age: 2,
     kind: 'Golden retriever',
   },
-}
+};
 ```
 
 As you can see in this implementation, **info** can be a `string` or a `custom object` as well ❤️.
