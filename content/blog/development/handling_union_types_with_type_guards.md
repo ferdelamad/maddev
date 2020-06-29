@@ -1,5 +1,5 @@
 ---
-title: "🐕Handling Union Types with Type Guards in TypeScript"
+title: "🐕 Handling Union Types with Type Guards in TypeScript"
 date: 2020-06-14 13:06:12
 category: "development"
 ---
