@@ -230,8 +230,9 @@ const max: Dog<{ age: number; kind: string }> = {
 As you can see in this implementation, **info** can be a `string` or a `custom object` as well ❤️.
 
 That's it for **Pets** and generics in TypeScript.
+You can access the full version of the code <ins>**[here](https://codesandbox.io/s/generic-types-zvivb)**</ins>.
 
-Read more about [TypeScript Utilities](https://madd.dev/development/typescript_utilities/).
-Read more about [Type Guards in TypeScript](https://madd.dev/development/handling_union_types_with_type_guards/).
+Read more about <ins>**[TypeScript Utilities](https://madd.dev/development/typescript_utilities/)**</ins>.
+Read more about <ins>**[Type Guards in TypeScript](https://madd.dev/development/handling_union_types_with_type_guards/)**</ins>.
 
 Happy hacking! 👻
